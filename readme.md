@@ -1,6 +1,6 @@
 <p align="center">
     <a href="#readme">
-        <img alt="logo" width="50%" src="output/evolution-strategy.png">
+        <img alt="logo" width="50%" src="Documentation/logo.white.small.png">
     </a>
 </p>
 <p align="center">
