@@ -1,161 +1,337 @@
-<<<<<<< HEAD
-![alt tag](Documentation/logo.white.small.png)
-=======
-![alt tag](https://nobitrade.com/images/logo.png)
->>>>>>> 970d35e993f02ed38023d6977bf4be9b298849d7
-=========
+<p align="center">
+    <a href="#readme">
+        <img alt="logo" width="50%" src="output/evolution-strategy.png">
+    </a>
+</p>
+<p align="center">
+  <a href="https://github.com/huseinzol05/Stock-Prediction-Models/blob/master/LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-Apache--License--2.0-yellow.svg"></a>
+  <a href="#"><img src="https://img.shields.io/badge/deeplearning-30--models-success.svg"></a>
+  <a href="#"><img src="https://img.shields.io/badge/agent-23--models-success.svg"></a>
+</p>
 
-[![Build Status](https://github.com/QuantConnect/Lean/workflows/Build%20%26%20Test%20Lean/badge.svg)](https://github.com/QuantConnect/Lean/actions?query=workflow%3A%22Build%20%26%20Test%20Lean%22) &nbsp;&nbsp;&nbsp; [![Regression Tests](https://github.com/QuantConnect/Lean/workflows/Regression%20Tests/badge.svg)](https://github.com/QuantConnect/Lean/actions?query=workflow%3A%22Regression%20Tests%22) &nbsp;&nbsp;&nbsp; [![LEAN Forum](https://img.shields.io/badge/debug-LEAN%20Forum-53c82b.svg)](https://www.quantconnect.com/forum/discussions/1/lean) &nbsp;&nbsp;&nbsp; [![Slack Chat](https://img.shields.io/badge/chat-Slack-53c82b.svg)](https://www.quantconnect.com/slack)
+---
 
+**Stock-Prediction-Models**, Gathers machine learning and deep learning models for Stock forecasting, included trading bots and simulations.
 
-[Lean Home][1] | [Documentation][2] | [Download Zip][3] | [Docker Hub][8] | [Nuget][9]
+## Table of contents
+  * [Models](#models)
+  * [Agents](#agents)
+  * [Realtime Agent](realtime-agent)
+  * [Data Explorations](#data-explorations)
+  * [Simulations](#simulations)
+  * [Tensorflow-js](#tensorflow-js)
+  * [Misc](#misc)
+  * [Results](#results)
+    * [Results Agent](#results-agent)
+    * [Results signal prediction](#results-signal-prediction)
+    * [Results analysis](#results-analysis)
+    * [Results simulation](#results-simulation)
 
-----------
+## Contents
 
-## Introduction ##
- 
-Lean Engine is an open-source algorithmic trading engine built for easy strategy research, backtesting and live trading. We integrate with common data providers and brokerages so you can quickly deploy algorithmic trading strategies.
+### Models
 
-The core of the LEAN Engine is written in C#; but it operates seamlessly on Linux, Mac and Windows operating systems. It supports algorithms written in Python 3.8 or C#. Lean drives the web-based algorithmic trading platform [QuantConnect][4].
+#### [Deep-learning models](deep-learning)
+ 1. LSTM
+ 2. LSTM Bidirectional
+ 3. LSTM 2-Path
+ 4. GRU
+ 5. GRU Bidirectional
+ 6. GRU 2-Path
+ 7. Vanilla
+ 8. Vanilla Bidirectional
+ 9. Vanilla 2-Path
+ 10. LSTM Seq2seq
+ 11. LSTM Bidirectional Seq2seq
+ 12. LSTM Seq2seq VAE
+ 13. GRU Seq2seq
+ 14. GRU Bidirectional Seq2seq
+ 15. GRU Seq2seq VAE
+ 16. Attention-is-all-you-Need
+ 17. CNN-Seq2seq
+ 18. Dilated-CNN-Seq2seq
 
- 
-## Proudly Sponsored By ##
+**Bonus**
 
-Want your company logo here? [Sponsor LEAN](https://github.com/sponsors/QuantConnect) to be part of radically open algorithmic-trading innovation.
+1. How to use one of the model to forecast `t + N`, [how-to-forecast.ipynb](deep-learning/how-to-forecast.ipynb)
+2. Consensus, how to use sentiment data to forecast `t + N`, [sentiment-consensus.ipynb](deep-learning/sentiment-consensus.ipynb)
 
+#### [Stacking models](stacking)
+ 1. Deep Feed-forward Auto-Encoder Neural Network to reduce dimension + Deep Recurrent Neural Network + ARIMA + Extreme Boosting Gradient Regressor
+ 2. Adaboost + Bagging + Extra Trees + Gradient Boosting + Random Forest + XGB
 
-## QuantConnect is Hiring! ##
-Join the team and solve some of the most difficult challenges in quantitative finance. If you are passionate about algorithmic trading we'd like to hear from you. The below roles are open in our Seattle, WA office. When applying, make sure to mention you came through GitHub: 
+### [Agents](agent)
 
-- [**C# Engineer**](https://www.getonbrd.com/jobs/programming/c-c-software-engineer-quantconnect-remote): Contribute remotely to the core of LEAN through the open-source project LEAN. 
+1. Turtle-trading agent
+2. Moving-average agent
+3. Signal rolling agent
+4. Policy-gradient agent
+5. Q-learning agent
+6. Evolution-strategy agent
+7. Double Q-learning agent
+8. Recurrent Q-learning agent
+9. Double Recurrent Q-learning agent
+10. Duel Q-learning agent
+11. Double Duel Q-learning agent
+12. Duel Recurrent Q-learning agent
+13. Double Duel Recurrent Q-learning agent
+14. Actor-critic agent
+15. Actor-critic Duel agent
+16. Actor-critic Recurrent agent
+17. Actor-critic Duel Recurrent agent
+18. Curiosity Q-learning agent
+19. Recurrent Curiosity Q-learning agent
+20. Duel Curiosity Q-learning agent
+21. Neuro-evolution agent
+22. Neuro-evolution with Novelty search agent
+23. ABCD strategy agent
 
-- [**UX Developer**](https://www.getonbrd.com/jobs/programming/full-stack-engineer-quantconnect-remote): Collaborate with QuantConnect to develop a world-leading online experience for a community of developers from all over the world.  
+### [Data Explorations](misc)
 
-## System Overview ##
+1. stock market study on TESLA stock, [tesla-study.ipynb](misc/tesla-study.ipynb)
+2. Outliers study using K-means, SVM, and Gaussian on TESLA stock, [outliers.ipynb](misc/outliers.ipynb)
+3. Overbought-Oversold study on TESLA stock, [overbought-oversold.ipynb](misc/overbought-oversold.ipynb)
+4. Which stock you need to buy? [which-stock.ipynb](misc/which-stock.ipynb)
 
-![alt tag](Documentation/2-Overview-Detailed-New.png)
+### [Simulations](simulation)
 
-The Engine is broken into many modular pieces which can be extended without touching other files. The modules are configured in config.json as set "environments". Through these environments, you can control LEAN to operate in the mode required. 
+1. Simple Monte Carlo, [monte-carlo-drift.ipynb](simulation/monte-carlo-drift.ipynb)
+2. Dynamic volatility Monte Carlo, [monte-carlo-dynamic-volatility.ipynb](simulation/monte-carlo-dynamic-volatility.ipynb)
+3. Drift Monte Carlo, [monte-carlo-drift.ipynb](simulation/monte-carlo-drift.ipynb)
+4. Multivariate Drift Monte Carlo BTC/USDT with Bitcurate sentiment, [multivariate-drift-monte-carlo.ipynb](simulation/multivariate-drift-monte-carlo.ipynb)
+5. Portfolio optimization, [portfolio-optimization.ipynb](simulation/portfolio-optimization.ipynb), inspired from https://pythonforfinance.net/2017/01/21/investment-portfolio-optimisation-with-python/
 
-The most important plugins are:
+### [Tensorflow-js](stock-forecasting-js)
 
- - **Result Processing** (IResultHandler)
-   > Handle all messages from the algorithmic trading engine. Decide what should be sent, and where the messages should go. The result processing system can send messages to a local GUI, or the web interface.
+I code [LSTM Recurrent Neural Network](deep-learning/1.lstm.ipynb) and [Simple signal rolling agent](agent/simple-agent.ipynb) inside Tensorflow JS, you can try it here, [huseinhouse.com/stock-forecasting-js](https://huseinhouse.com/stock-forecasting-js/), you can download any historical CSV and upload dynamically.
 
- - **Datafeed Sourcing** (IDataFeed)
-   > Connect and download the data required for the algorithmic trading engine. For backtesting this sources files from the disk, for live trading, it connects to a stream and generates the data objects.
+### [Misc](misc)
 
- - **Transaction Processing** (ITransactionHandler)
-   > Process new order requests; either using the fill models provided by the algorithm or with an actual brokerage. Send the processed orders back to the algorithm's portfolio to be filled.
+1. fashion trending prediction with cross-validation, [fashion-forecasting.ipynb](misc/fashion-forecasting.ipynb)
+2. Bitcoin analysis with LSTM prediction, [bitcoin-analysis-lstm.ipynb](misc/bitcoin-analysis-lstm.ipynb)
+3. Kijang Emas Bank Negara, [kijang-emas-bank-negara.ipynb](misc/kijang-emas-bank-negara.ipynb)
 
- - **Realtime Event Management** (IRealtimeHandler)
-   > Generate real-time events - such as the end of day events. Trigger callbacks to real-time event handlers. For backtesting, this is mocked-up a works on simulated time. 
- 
- - **Algorithm State Setup** (ISetupHandler)
-   > Configure the algorithm cash, portfolio and data requested. Initialize all state parameters required.
+## Results
 
-These are all configurable from the config.json file in the Launcher Project.
+### Results Agent
 
-## Developing with Lean CLI ##
+**This agent only able to buy or sell 1 unit per transaction.**
 
-QuantConnect recommends using [Lean CLI](https://github.com/QuantConnect/lean-cli) for local algorithm development. This is because it is a great tool for working with your algorithms locally while still being able to deploy to the cloud and have access to Lean data. It is also able to run algorithms on your local machine with your data through our official docker images.
+1. Turtle-trading agent, [turtle-agent.ipynb](agent/1.turtle-agent.ipynb)
 
-Reference QuantConnects documentation on Lean CLI [here](https://www.quantconnect.com/docs/v2/lean-cli/getting-started/lean-cli)
+<img src="output-agent/turtle-agent.png" width="70%" align="">
 
-## Installation Instructions ##
+2. Moving-average agent, [moving-average-agent.ipynb](agent/2.moving-average-agent.ipynb)
 
-This section will cover how to install lean locally for you to use in your own environment.
+<img src="output-agent/moving-average-agent.png" width="70%" align="">
 
-Refer to the following readme files for a detailed guide regarding using your local IDE with Lean:
-* [VS Code](.vscode/readme.md)
-* [VS](.vs/readme.md)
-  
+3. Signal rolling agent, [signal-rolling-agent.ipynb](agent/3.signal-rolling-agent.ipynb)
 
-To install locally, download the zip file with the [latest master](https://github.com/QuantConnect/Lean/archive/master.zip) and unzip it to your favorite location. Alternatively, install [Git](https://git-scm.com/downloads) and clone the repo:
+<img src="output-agent/signal-rolling-agent.png" width="70%" align="">
 
-```
-git clone https://github.com/QuantConnect/Lean.git
-cd Lean
-```
+4. Policy-gradient agent, [policy-gradient-agent.ipynb](agent/4.policy-gradient-agent.ipynb)
 
-### macOS 
+<img src="output-agent/policy-gradient-agent.png" width="70%" align="">
 
-- Install [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
-- Open `QuantConnect.Lean.sln` in Visual Studio
+5. Q-learning agent, [q-learning-agent.ipynb](agent/5.q-learning-agent.ipynb)
 
-Visual Studio will automatically start to restore the Nuget packages. If not, in the menu bar, click `Project > Restore NuGet Packages`.
+<img src="output-agent/q-learning-agent.png" width="70%" align="">
 
-- In the menu bar, click `Run > Start Debugging`.
+6. Evolution-strategy agent, [evolution-strategy-agent.ipynb](agent/6.evolution-strategy-agent.ipynb)
 
-Alternatively, run the compiled `dll` file. First, in the menu bar, click `Build > Build All`, then:
-```
-cd Lean/Launcher/bin/Debug
-dotnet QuantConnect.Lean.Launcher.dll
-```
+<img src="output-agent/evolution-strategy-agent.png" width="70%" align="">
 
-### Linux (Debian, Ubuntu)
+7. Double Q-learning agent, [double-q-learning-agent.ipynb](agent/7.double-q-learning-agent.ipynb)
 
-- Install [dotnet 6](https://docs.microsoft.com/en-us/dotnet/core/install/linux):
-- Compile Lean Solution:
-```
-dotnet build QuantConnect.Lean.sln
-```
-- Run Lean:
-```
-cd Launcher/bin/Debug
-dotnet QuantConnect.Lean.Launcher.dll
-```
-- Interactive Brokers set up details
+<img src="output-agent/double-q-learning.png" width="70%" align="">
 
-Make sure you fix the `ib-tws-dir` and `ib-controller-dir` fields in the `config.json` file with the actual paths to the TWS and the IBController folders respectively.
+8. Recurrent Q-learning agent, [recurrent-q-learning-agent.ipynb](agent/8.recurrent-q-learning-agent.ipynb)
 
-If after all you still receive connection refuse error, try changing the `ib-port` field in the `config.json` file from 4002 to 4001 to match the settings in your IBGateway/TWS.
+<img src="output-agent/recurrent-q-learning.png" width="70%" align="">
 
-### Windows
+9. Double Recurrent Q-learning agent, [double-recurrent-q-learning-agent.ipynb](agent/9.double-recurrent-q-learning-agent.ipynb)
 
-- Install [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
-- Open `QuantConnect.Lean.sln` in Visual Studio
-- Build the solution by clicking Build Menu -> Build Solution (this should trigger the Nuget package restore)
-- Press `F5` to run
+<img src="output-agent/double-recurrent-q-learning.png" width="70%" align="">
 
-### Python Support
+10. Duel Q-learning agent, [duel-q-learning-agent.ipynb](agent/10.duel-q-learning-agent.ipynb)
 
-A full explanation of the Python installation process can be found in the [Algorithm.Python](https://github.com/QuantConnect/Lean/tree/master/Algorithm.Python#quantconnect-python-algorithm-project) project.
+<img src="output-agent/double-q-learning.png" width="70%" align="">
 
-### Local-Cloud Hybrid Development. 
+11. Double Duel Q-learning agent, [double-duel-q-learning-agent.ipynb](agent/11.double-duel-q-learning-agent.ipynb)
 
-Seamlessly develop locally in your favorite development environment, with full autocomplete and debugging support to quickly and easily identify problems with your strategy. For more information please see the [CLI Home](https://www.quantconnect.com/cli).
+<img src="output-agent/double-duel-q-learning.png" width="70%" align="">
 
-## Issues and Feature Requests ##
+12. Duel Recurrent Q-learning agent, [duel-recurrent-q-learning-agent.ipynb](agent/12.duel-recurrent-q-learning-agent.ipynb)
 
-Please submit bugs and feature requests as an issue to the [Lean Repository][5]. Before submitting an issue please read others to ensure it is not a duplicate.
+<img src="output-agent/duel-recurrent-q-learning.png" width="70%" align="">
 
-## Mailing List ## 
+13. Double Duel Recurrent Q-learning agent, [double-duel-recurrent-q-learning-agent.ipynb](agent/13.double-duel-recurrent-q-learning-agent.ipynb)
 
-The mailing list for the project can be found on [LEAN Forum][6]. Please use this to request assistance with your installations and setup questions.
+<img src="output-agent/double-duel-recurrent-q-learning.png" width="70%" align="">
 
-## Contributors and Pull Requests ##
+14. Actor-critic agent, [actor-critic-agent.ipynb](agent/14.actor-critic-agent.ipynb)
 
-Contributions are warmly very welcomed but we ask you to read the existing code to see how it is formatted, commented and ensure contributions match the existing style. All code submissions must include accompanying tests. Please see the [contributor guide lines][7]. All accepted pull requests will get a 2mo free Prime subscription on QuantConnect. Once your pull-request has been merged write to us at support@quantconnect.com with a link to your PR to claim your free live trading. QC <3 Open Source.
+<img src="output-agent/actor-critic.png" width="70%" align="">
 
-A huge thank-you all our contributors!
-<a href="https://github.com/QuantConnect/Lean/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=QuantConnect/Lean" />
-</a>
+15. Actor-critic Duel agent, [actor-critic-duel-agent.ipynb](agent/14.actor-critic-duel-agent.ipynb)
 
-## Acknowledgements ##
+<img src="output-agent/actor-critic-duel.png" width="70%" align="">
 
-The open-sourcing of QuantConnect would not have been possible without the support of the Pioneers. The Pioneers formed the core 100 early adopters of QuantConnect who subscribed and allowed us to launch the project into open source. 
+16. Actor-critic Recurrent agent, [actor-critic-recurrent-agent.ipynb](agent/16.actor-critic-recurrent-agent.ipynb)
 
-Ryan H, Pravin B, Jimmie B, Nick C, Sam C, Mattias S, Michael H, Mark M, Madhan, Paul R, Nik M, Scott Y, BinaryExecutor.com, Tadas T, Matt B, Binumon P, Zyron, Mike O, TC, Luigi, Lester Z, Andreas H, Eugene K, Hugo P, Robert N, Christofer O, Ramesh L, Nicholas S, Jonathan E, Marc R, Raghav N, Marcus, Hakan D, Sergey M, Peter McE, Jim M, INTJCapital.com, Richard E, Dominik, John L, H. Orlandella, Stephen L, Risto K, E.Subasi, Peter W, Hui Z, Ross F, Archibald112, MooMooForex.com, Jae S, Eric S, Marco D, Jerome B, James B. Crocker, David Lypka, Edward T, Charlie Guse, Thomas D, Jordan I, Mark S, Bengt K, Marc D, Al C, Jan W, Ero C, Eranmn, Mitchell S, Helmuth V, Michael M, Jeremy P, PVS78, Ross D, Sergey K, John Grover, Fahiz Y, George L.Z., Craig E, Sean S, Brad G, Dennis H, Camila C, Egor U, David T, Cameron W, Napoleon Hernandez, Keeshen A, Daniel E, Daniel H, M.Patterson, Asen K, Virgil J, Balazs Trader, Stan L, Con L, Will D, Scott K, Barry K, Pawel D, S Ray, Richard C, Peter L, Thomas L., Wang H, Oliver Lee, Christian L..
+<img src="output-agent/actor-critic-recurrent.png" width="70%" align="">
 
+17. Actor-critic Duel Recurrent agent, [actor-critic-duel-recurrent-agent.ipynb](agent/17.actor-critic-duel-recurrent-agent.ipynb)
 
-  [1]: https://www.lean.io/ "Lean Open Source Home Page"
-  [2]: https://www.lean.io/docs/ "Lean Documentation"
-  [3]: https://github.com/QuantConnect/Lean/archive/master.zip
-  [4]: https://www.quantconnect.com "QuantConnect"
-  [5]: https://github.com/QuantConnect/Lean/issues
-  [6]: https://www.quantconnect.com/forum/discussions/1/lean
-  [7]: https://github.com/QuantConnect/Lean/blob/master/CONTRIBUTING.md
-  [8]: https://hub.docker.com/orgs/quantconnect/repositories
-  [9]: https://www.nuget.org/profiles/jaredbroad
+<img src="output-agent/actor-critic-duel-recurrent.png" width="70%" align="">
+
+18. Curiosity Q-learning agent, [curiosity-q-learning-agent.ipynb](agent/18.curiosity-q-learning-agent.ipynb)
+
+<img src="output-agent/curiosity-q-learning.png" width="70%" align="">
+
+19. Recurrent Curiosity Q-learning agent, [recurrent-curiosity-q-learning.ipynb](agent/19.recurrent-curiosity-q-learning-agent.ipynb)
+
+<img src="output-agent/recurrent-curiosity-q-learning.png" width="70%" align="">
+
+20. Duel Curiosity Q-learning agent, [duel-curiosity-q-learning-agent.ipynb](agent/20.duel-curiosity-q-learning-agent.ipynb)
+
+<img src="output-agent/duel-curiosity-q-learning.png" width="70%" align="">
+
+21. Neuro-evolution agent, [neuro-evolution.ipynb](agent/21.neuro-evolution-agent.ipynb)
+
+<img src="output-agent/neuro-evolution.png" width="70%" align="">
+
+22. Neuro-evolution with Novelty search agent, [neuro-evolution-novelty-search.ipynb](agent/22.neuro-evolution-novelty-search-agent.ipynb)
+
+<img src="output-agent/neuro-evolution-novelty-search.png" width="70%" align="">
+
+23. ABCD strategy agent, [abcd-strategy.ipynb](agent/23.abcd-strategy-agent.ipynb)
+
+<img src="output-agent/abcd-strategy.png" width="70%" align="">
+
+### Results signal prediction
+
+I will cut the dataset to train and test datasets,
+
+1. Train dataset derived from starting timestamp until last 30 days
+2. Test dataset derived from last 30 days until end of the dataset
+
+So we will let the model do forecasting based on last 30 days, and we will going to repeat the experiment for 10 times. You can increase it locally if you want, and tuning parameters will help you by a lot.
+
+1. LSTM, accuracy 95.693%, time taken for 1 epoch 01:09
+
+<img src="output/lstm.png" width="70%" align="">
+
+2. LSTM Bidirectional, accuracy 93.8%, time taken for 1 epoch 01:40
+
+<img src="output/bidirectional-lstm.png" width="70%" align="">
+
+3. LSTM 2-Path, accuracy 94.63%, time taken for 1 epoch 01:39
+
+<img src="output/lstm-2path.png" width="70%" align="">
+
+4. GRU, accuracy 94.63%, time taken for 1 epoch 02:10
+
+<img src="output/gru.png" width="70%" align="">
+
+5. GRU Bidirectional, accuracy 92.5673%, time taken for 1 epoch 01:40
+
+<img src="output/bidirectional-gru.png" width="70%" align="">
+
+6. GRU 2-Path, accuracy 93.2117%, time taken for 1 epoch 01:39
+
+<img src="output/gru-2path.png" width="70%" align="">
+
+7. Vanilla, accuracy 91.4686%, time taken for 1 epoch 00:52
+
+<img src="output/vanilla.png" width="70%" align="">
+
+8. Vanilla Bidirectional, accuracy 88.9927%, time taken for 1 epoch 01:06
+
+<img src="output/bidirectional-vanilla.png" width="70%" align="">
+
+9. Vanilla 2-Path, accuracy 91.5406%, time taken for 1 epoch 01:08
+
+<img src="output/vanilla-2path.png" width="70%" align="">
+
+10. LSTM Seq2seq, accuracy 94.9817%, time taken for 1 epoch 01:36
+
+<img src="output/lstm-seq2seq.png" width="70%" align="">
+
+11. LSTM Bidirectional Seq2seq, accuracy 94.517%, time taken for 1 epoch 02:30
+
+<img src="output/bidirectional-lstm-seq2seq.png" width="70%" align="">
+
+12. LSTM Seq2seq VAE, accuracy 95.4190%, time taken for 1 epoch 01:48
+
+<img src="output/lstm-seq2seq-vae.png" width="70%" align="">
+
+13. GRU Seq2seq, accuracy 90.8854%, time taken for 1 epoch 01:34
+
+<img src="output/gru-seq2seq.png" width="70%" align="">
+
+14. GRU Bidirectional Seq2seq, accuracy 67.9915%, time taken for 1 epoch 02:30
+
+<img src="output/bidirectional-gru-seq2seq.png" width="70%" align="">
+
+15. GRU Seq2seq VAE, accuracy 89.1321%, time taken for 1 epoch 01:48
+
+<img src="output/gru-seq2seq-vae.png" width="70%" align="">
+
+16. Attention-is-all-you-Need, accuracy 94.2482%, time taken for 1 epoch 01:41
+
+<img src="output/attention-is-all-you-need.png" width="70%" align="">
+
+17. CNN-Seq2seq, accuracy 90.74%, time taken for 1 epoch 00:43
+
+<img src="output/cnn-seq2seq.png" width="70%" align="">
+
+18. Dilated-CNN-Seq2seq, accuracy 95.86%, time taken for 1 epoch 00:14
+
+<img src="output/dilated-cnn-seq2seq.png" width="70%" align="">
+
+**Bonus**
+
+1. How to forecast,
+
+<img src="output/how-to-forecast.png" width="70%" align="">
+
+2. Sentiment consensus,
+
+<img src="output/sentiment-consensus.png" width="70%" align="">
+
+### Results analysis
+
+1. Outliers study using K-means, SVM, and Gaussian on TESLA stock
+
+<img src="misc/outliers.png" width="70%" align="">
+
+2. Overbought-Oversold study on TESLA stock
+
+<img src="misc/overbought-oversold.png" width="70%" align="">
+
+3. Which stock you need to buy?
+
+<img src="misc/which-stock.png" width="40%" align="">
+
+### Results simulation
+
+1. Simple Monte Carlo
+
+<img src="simulation/monte-carlo-simple.png" width="70%" align="">
+
+2. Dynamic volatity Monte Carlo
+
+<img src="simulation/monte-carlo-dynamic-volatility.png" width="70%" align="">
+
+3. Drift Monte Carlo
+
+<img src="simulation/monte-carlo-drift.png" width="70%" align="">
+
+4. Multivariate Drift Monte Carlo BTC/USDT with Bitcurate sentiment
+
+<img src="simulation/multivariate-drift-monte-carlo.png" width="70%" align="">
+
+5. Portfolio optimization
+
+<img src="simulation/portfolio-optimization.png" width="40%" align="">
