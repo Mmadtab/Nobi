@@ -11,7 +11,7 @@
 
 ---
 
-**Stock-Prediction-Models**, Gathers machine learning and deep learning models for Stock forecasting, included trading bots and simulations.
+**Automated Trading in Crypto Market**, Nobi gathers machine learning and deep learning models for chart forecasting, included trading bots and simulations.
 
 ## Table of contents
   * [Models](#models)
